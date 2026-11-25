@@ -1,0 +1,36 @@
+    i New version 1.30.0 available (installed version is 1.28.0) at https://github.com/docker/scout-cli
+    ...Storing image for indexing
+    v Image stored for indexing
+    ...Indexing
+    v Indexed 89 packages
+    ...Evaluating policies
+    v Policy evaluation completed
+
+    i Base image was auto-detected. To get more accurate results, build images with max-mode provenance attestations.
+      Review https://docs.docker.com/build/attestations/slsa-provenance/ for more information.
+
+ Target             Ôöé  quiz-docker:initial  Ôöé    1C     2H     8M     6L  
+   digest           Ôöé  53ff1b821d9f         Ôöé                             
+ Base image         Ôöé  nginx:1-alpine       Ôöé    1C     2H     7M     5L  
+ Updated base image Ôöé  nginx:1-alpine-slim  Ôöé    1C     1H     0M     0L  
+                    Ôöé                       Ôöé           -1     -7     -5  
+
+Policy status  FAILED  (3/7 policies met)
+Health score  D  (50%)
+
+ Status Ôöé                     Policy                     Ôöé           Results           
+ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔö╝ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔö╝ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ
+ !      Ôöé Image runs as the root user                    Ôöé                             
+ !      Ôöé Copyleft licensed packages found               Ôöé    35 packages              
+ !      Ôöé Fixable critical or high vulnerabilities found Ôöé    1C     2H     0M     0L  
+ v      Ôöé No high-profile vulnerabilities                Ôöé    0C     0H     0M     0L  
+ v      Ôöé No outdated base images                        Ôöé                             
+ v      Ôöé No unapproved base images                      Ôöé    0 deviations             
+ !      Ôöé Required supply chain attestations missing     Ôöé    2 deviations             
+
+What's next:
+    View policy violations ÔåÆ docker scout policy quiz-docker:initial
+    View vulnerabilities ÔåÆ docker scout cves quiz-docker:initial
+    View base image update recommendations ÔåÆ docker scout recommendations quiz-docker:initial
+    Compare with the latest in the registry ÔåÆ docker scout compare --to-latest quiz-docker:initial
+
