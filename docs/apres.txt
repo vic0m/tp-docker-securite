@@ -1,0 +1,110 @@
+VALIDATION - VERSION DURCIE - 2026-11-25 14:27
+
+=== Code HTTP de l'application (200 = fonctionne) ===
+200
+
+
+=== Etat du conteneur (healthy attendu) ===
+
+
+=== Utilisateur du processus dans le conteneur ===
+Error response from daemon: container 5c4e8a608008068623f84ec762575f3cae8848506c6e8d491533343184a00556 is not running
+
+
+=== Ecriture dans le systeme de fichiers (doit echouer) ===
+Error response from daemon: container 5c4e8a608008068623f84ec762575f3cae8848506c6e8d491533343184a00556 is not running
+
+
+=== En-tetes HTTP (version masquee, en-tetes de securite) ===
+HTTP/1.1 200 OK
+Server: nginx/1.31.10
+Date: Wed, 25 Nov 2026 13:27:02 GMT
+Content-Type: text/html
+Content-Length: 577
+Last-Modified: Wed, 25 Nov 2026 13:14:44 GMT
+Connection: keep-alive
+ETag: "6b06df44-241"
+Accept-Ranges: bytes
+
+
+
+=== Restrictions d'execution ===
+ReadonlyRootfs=true CapDrop=[ALL] Memory=134217728 PidsLimit=100 SecurityOpt=[no-new-privileges] Privileged=false
+
+
+=== Taille de l'image ===
+IMAGE         ID             DISK USAGE   CONTENT SIZE   EXTRA
+quiz:secure   322a26ab9d11       90.2MB         25.6MB   U    
+
+
+=== Historique des couches (aucun secret attendu) ===
+IMAGE          CREATED          CREATED BY                                      SIZE      COMMENT
+322a26ab9d11   48 seconds ago   USER nginx                                      0B        buildkit.dockerfile.v0
+<missing>      48 seconds ago   HEALTHCHECK {Test:[CMD-SHELL wget -qO- http:ÔÇª   0B        buildkit.dockerfile.v0
+<missing>      48 seconds ago   EXPOSE [8080/tcp]                               0B        buildkit.dockerfile.v0
+<missing>      48 seconds ago   COPY /app/dist /usr/share/nginx/html # buildÔÇª   57.3kB    buildkit.dockerfile.v0
+<missing>      52 seconds ago   COPY nginx.conf /etc/nginx/conf.d/default.coÔÇª   20.5kB    buildkit.dockerfile.v0
+<missing>      5 weeks ago      USER 101                                        0B        buildkit.dockerfile.v0
+<missing>      5 weeks ago      RUN |2 UID=101 GID=101 /bin/sh -c set -x    ÔÇª   43.6MB    buildkit.dockerfile.v0
+<missing>      5 weeks ago      USER root                                       0B        buildkit.dockerfile.v0
+<missing>      5 weeks ago      ARG GID=101                                     0B        buildkit.dockerfile.v0
+<missing>      5 weeks ago      ARG UID=101                                     0B        buildkit.dockerfile.v0
+<missing>      5 weeks ago      ENV NJS_RELEASE=1                               0B        buildkit.dockerfile.v0
+<missing>      5 weeks ago      ENV NJS_VERSION=1.0.2                           0B        buildkit.dockerfile.v0
+<missing>      5 weeks ago      CMD ["nginx" "-g" "daemon off;"]                0B        buildkit.dockerfile.v0
+<missing>      5 weeks ago      USER 101                                        0B        buildkit.dockerfile.v0
+<missing>      5 weeks ago      STOPSIGNAL SIGQUIT                              0B        buildkit.dockerfile.v0
+<missing>      5 weeks ago      EXPOSE [8080/tcp]                               0B        buildkit.dockerfile.v0
+<missing>      5 weeks ago      ENTRYPOINT ["/docker-entrypoint.sh"]            0B        buildkit.dockerfile.v0
+<missing>      5 weeks ago      COPY 30-tune-worker-processes.sh /docker-entÔÇª   16.4kB    buildkit.dockerfile.v0
+<missing>      5 weeks ago      COPY 20-envsubst-on-templates.sh /docker-entÔÇª   12.3kB    buildkit.dockerfile.v0
+<missing>      5 weeks ago      COPY 15-local-resolvers.envsh /docker-entrypÔÇª   12.3kB    buildkit.dockerfile.v0
+<missing>      5 weeks ago      COPY 10-listen-on-ipv6-by-default.sh /dockerÔÇª   12.3kB    buildkit.dockerfile.v0
+<missing>      5 weeks ago      COPY docker-entrypoint.sh / # buildkit          8.19kB    buildkit.dockerfile.v0
+<missing>      5 weeks ago      RUN |2 UID=101 GID=101 /bin/sh -c sed -i 's,ÔÇª   61.4kB    buildkit.dockerfile.v0
+<missing>      5 weeks ago      RUN |2 UID=101 GID=101 /bin/sh -c set -x    ÔÇª   11.7MB    buildkit.dockerfile.v0
+<missing>      5 weeks ago      ARG GID=101                                     0B        buildkit.dockerfile.v0
+<missing>      5 weeks ago      ARG UID=101                                     0B        buildkit.dockerfile.v0
+<missing>      5 weeks ago      ENV DYNPKG_RELEASE=1                            0B        buildkit.dockerfile.v0
+<missing>      5 weeks ago      ENV PKG_RELEASE=1                               0B        buildkit.dockerfile.v0
+<missing>      5 weeks ago      ENV NGINX_VERSION=1.30.6                        0B        buildkit.dockerfile.v0
+<missing>      5 weeks ago      LABEL maintainer=NGINX Docker Maintainers <dÔÇª   0B        buildkit.dockerfile.v0
+<missing>      2 months ago     CMD ["/bin/sh"]                                 0B        buildkit.dockerfile.v0
+<missing>      2 months ago     ADD alpine-minirootfs-3.24.2-x86_64.tar.gz /ÔÇª   9.08MB    buildkit.dockerfile.v0
+
+
+=== Scan de vulnerabilites de l'image (Docker Scout) ===
+    i New version 1.30.0 available (installed version is 1.28.0) at https://github.com/docker/scout-cli
+    ...Storing image for indexing
+    v Image stored for indexing
+    ...Indexing
+    v Indexed 86 packages
+    ...Evaluating policies
+    v Policy evaluation completed
+
+    i Base image was auto-detected. To get more accurate results, build images with max-mode provenance attestations.
+      Review https://docs.docker.com/build/attestations/slsa-provenance/ for more information.
+
+ Target     Ôöé  quiz:secure                              Ôöé   14C    32H    13M     5L  
+   digest   Ôöé  322a26ab9d11                             Ôöé                             
+ Base image Ôöé  nginxinc/nginx-unprivileged:1.30-alpine  Ôöé   14C    32H    13M     5L  
+
+Policy status  FAILED  (3/7 policies met)
+Health score  D  (33%)
+
+ Status Ôöé                     Policy                     Ôöé           Results           
+ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔö╝ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔö╝ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ
+ v      Ôöé Default non-root user                          Ôöé                             
+ !      Ôöé Copyleft licensed packages found               Ôöé    35 packages              
+ !      Ôöé Fixable critical or high vulnerabilities found Ôöé   14C    31H     0M     0L  
+ !      Ôöé High-profile vulnerabilities found             Ôöé    1C     1H     0M     0L  
+ v      Ôöé No outdated base images                        Ôöé                             
+ v      Ôöé No unapproved base images                      Ôöé    0 deviations             
+ !      Ôöé Required supply chain attestations missing     Ôöé    2 deviations             
+
+What's next:
+    View policy violations ÔåÆ docker scout policy quiz:secure
+    View vulnerabilities ÔåÆ docker scout cves quiz:secure
+    Compare with the latest in the registry ÔåÆ docker scout compare --to-latest quiz:secure
+
+
