@@ -1,0 +1,151 @@
+AUDIT - ETAT INITIAL (version de base) - 2026-11-25 14:25
+
+=== Code HTTP de l'application (200 = fonctionne) ===
+200
+
+
+=== Utilisateur du processus dans le conteneur ===
+Error response from daemon: container 1c18abfdf1b40fb9557343ec1881361b3ad9639b78d488625913db5df6492ca0 is not running
+
+
+=== Ecriture dans le systeme de fichiers ===
+Error response from daemon: container 1c18abfdf1b40fb9557343ec1881361b3ad9639b78d488625913db5df6492ca0 is not running
+
+
+=== En-tetes HTTP (version nginx visible ?) ===
+HTTP/1.1 200 OK
+Server: nginx/1.31.10
+Date: Wed, 25 Nov 2026 13:25:25 GMT
+Content-Type: text/html
+Content-Length: 577
+Last-Modified: Wed, 25 Nov 2026 13:14:44 GMT
+Connection: keep-alive
+ETag: "6b06df44-241"
+Accept-Ranges: bytes
+
+
+
+=== Restrictions d'execution (ReadonlyRootfs, CapDrop, Memory) ===
+ReadonlyRootfs=false CapDrop=[] Memory=0 Privileged=false
+
+
+=== Taille de l'image ===
+IMAGE        ID             DISK USAGE   CONTENT SIZE   EXTRA
+quiz:avant   b8ddef516a00        102MB         28.8MB   U    
+
+
+=== Healthcheck defini ? ===
+Healthcheck=<nil>
+
+
+=== Scan de vulnerabilites de l'image (Docker Scout) ===
+    i New version 1.30.0 available (installed version is 1.28.0) at https://github.com/docker/scout-cli
+    ...Storing image for indexing
+    v Image stored for indexing
+    ...Indexing
+    v Indexed 89 packages
+    ...Evaluating policies
+    v Policy evaluation completed
+
+    i Base image was auto-detected. To get more accurate results, build images with max-mode provenance attestations.
+      Review https://docs.docker.com/build/attestations/slsa-provenance/ for more information.
+
+ Target             Ôöé  quiz:avant           Ôöé    1C     2H     7M     5L  
+   digest           Ôöé  b8ddef516a00         Ôöé                             
+ Base image         Ôöé  nginx:1-alpine       Ôöé    1C     2H     7M     5L  
+ Updated base image Ôöé  nginx:1-alpine-slim  Ôöé    1C     1H     0M     0L  
+                    Ôöé                       Ôöé           -1     -7     -5  
+
+Policy status  FAILED  (3/7 policies met)
+Health score  D  (50%)
+
+ Status Ôöé                     Policy                     Ôöé           Results           
+ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔö╝ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔö╝ÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇÔöÇ
+ !      Ôöé Image runs as the root user                    Ôöé                             
+ !      Ôöé Copyleft licensed packages found               Ôöé    35 packages              
+ !      Ôöé Fixable critical or high vulnerabilities found Ôöé    1C     1H     0M     0L  
+ v      Ôöé No high-profile vulnerabilities                Ôöé    0C     0H     0M     0L  
+ v      Ôöé No outdated base images                        Ôöé                             
+ v      Ôöé No unapproved base images                      Ôöé    0 deviations             
+ !      Ôöé Required supply chain attestations missing     Ôöé    2 deviations             
+
+What's next:
+    View policy violations ÔåÆ docker scout policy quiz:avant
+    View vulnerabilities ÔåÆ docker scout cves quiz:avant
+    View base image update recommendations ÔåÆ docker scout recommendations quiz:avant
+    Compare with the latest in the registry ÔåÆ docker scout compare --to-latest quiz:avant
+
+
+
+=== Audit des dependances npm ===
+Unable to find image 'node:22-alpine' locally
+22-alpine: Pulling from library/node
+177fffbd7f51: Pulling fs layer
+87aaee1f6667: Pulling fs layer
+881fc932939e: Pulling fs layer
+e868d1035e50: Pulling fs layer
+881fc932939e: Already exists
+177fffbd7f51: Download complete
+e868d1035e50: Download complete
+bf6e4951a281: Download complete
+468bdce65ff1: Download complete
+87aaee1f6667: Download complete
+e868d1035e50: Pull complete
+87aaee1f6667: Pull complete
+177fffbd7f51: Pull complete
+Digest: sha256:1314fb30ec37592d5845e5a160d522c0e680972aa534549940b8d73bde88481a
+Status: Downloaded newer image for node:22-alpine
+# npm audit report
+
+esbuild  <=0.24.2
+Severity: moderate
+esbuild enables any website to send any requests to the development server and read the response - https://github.com/advisories/GHSA-67mh-4wv8-2f99
+fix available via `npm audit fix`
+node_modules/esbuild
+  vite  <=6.4.3
+  Depends on vulnerable versions of esbuild
+  node_modules/vite
+
+nanoid  <=3.3.17
+Severity: high
+Predictable results in nanoid generation when given non-integer values - https://github.com/advisories/GHSA-mwcw-c2x4-8c55
+nanoid: non-secure generators can loop indefinitely with negative size - https://github.com/advisories/GHSA-28wg-ghj8-5hjv
+nanoid: custom generators can loop indefinitely when size is zero - https://github.com/advisories/GHSA-2v37-7h3g-55p8
+nanoid: Integer Overflow or Wraparound - https://github.com/advisories/GHSA-xwg4-73v4-xw9w
+fix available via `npm audit fix`
+node_modules/nanoid
+
+postcss  <=8.5.22
+Severity: high
+PostCSS line return parsing error - https://github.com/advisories/GHSA-7fh5-64p2-3v2j
+PostCSS has XSS via Unescaped </style> in its CSS Stringify Output - https://github.com/advisories/GHSA-qx2v-qp2m-jg93
+PostCSS: Arbitrary file read and information disclosure via attacker-controlled sourceMappingURL in CSS comments - https://github.com/advisories/GHSA-6g55-p6wh-862q
+PostCSS: incomplete fix of GHSA-6g55-p6wh-862q ÔÇö attacker-controlled sourceMappingURL reads arbitrary .map files when `from` is unset - https://github.com/advisories/GHSA-fxqj-rqcc-2cmp
+PostCSS: Path Traversal in Previous Source Map Auto-Loading (sourceMappingURL) leads to Arbitrary .map File Disclosure - https://github.com/advisories/GHSA-r28c-9q8g-f849
+fix available via `npm audit fix`
+node_modules/postcss
+
+rollup  3.0.0 - 3.29.5
+Severity: high
+DOM Clobbering Gadget found in rollup bundled scripts that leads to XSS - https://github.com/advisories/GHSA-gcx4-mw62-g8wm
+Rollup 4 has Arbitrary File Write via Path Traversal - https://github.com/advisories/GHSA-mw96-cpmx-2vgc
+fix available via `npm audit fix`
+node_modules/rollup
+
+source-map-js  1.0.0 - 1.2.1
+Severity: high
+source-map-js allows event-loop denial of service through indexed source-map section offsets - https://github.com/advisories/GHSA-68fv-2mgg-jv7q
+fix available via `npm audit fix`
+node_modules/source-map-js
+
+
+6 vulnerabilities (1 moderate, 5 high)
+
+To address all issues, run:
+  npm audit fix
+npm notice
+npm notice New major version of npm available! 10.9.9 -> 12.2.3
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.3
+npm notice To update run: npm install -g npm@12.2.3
+npm notice
+
